@@ -1,5 +1,7 @@
 # Readme #
 
+srvOne built from Template
+
 ## Template Setup ##
 
 1. initialise Go module: go mod initi github.com/mjdilworth/<name>
@@ -35,8 +37,8 @@ or
 
 lsof -PiTCP -sTCP:LISTEN
 
-extract PID of myapp
-lsof -PiTCP -sTCP:LISTEN | grep myapp | awk '{ print $2 }'
+extract PID of srvOne
+lsof -PiTCP -sTCP:LISTEN | grep srvOne | awk '{ print $2 }'
 
 use backticks to evaluate and used by kill 
-kill lsof -PiTCP -sTCP:LISTEN | grep myapp | awk '{ print $2 }'
+kill lsof -PiTCP -sTCP:LISTEN | grep srvOne | awk '{ print $2 }'

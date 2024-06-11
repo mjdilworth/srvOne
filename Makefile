@@ -1,5 +1,5 @@
 PACKAGE_PATH ?= .
-BINARY_NAME ?= myapp#change me
+BINARY_NAME ?= srvOne#change me
 VERSION ?= 0.0.1
 BUILD_DIR := bin
 GIT_REV_PARSE := $(shell git rev-parse HEAD)

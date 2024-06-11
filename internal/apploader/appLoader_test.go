@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mjdilworth/template/internal/server"
+	"github.com/mjdilworth/srv0ne/internal/server"
 )
 
 // Helper functions
@@ -71,7 +71,7 @@ func sendSignalToRun(t *testing.T, termSignal syscall.Signal, millisecBeforeKill
 // New()
 func TestNew(t *testing.T) {
 
-	a := server.New()
+	a := server.New("8080")
 	loader := New(a)
 
 	typeOf := reflect.TypeOf(loader)

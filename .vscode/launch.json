@@ -13,7 +13,8 @@
             "program": "${fileDirname}",
             "args": [
                 "-flag=bar", 
-                "-daemon=true"
+                "-daemon=true",
+                "-port=8081",
             ]
         }
     ]

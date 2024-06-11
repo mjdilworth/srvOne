@@ -11,16 +11,19 @@ import (
 	"time"
 )
 
-type server struct{}
+type server struct {
+	port string
+}
 
-func New() server {
-	return server{}
+func New(p string) server {
+	return server{port: p}
 }
 
 func (s server) Run(ctx context.Context) {
 
 	srv := &http.Server{
-		Addr: ":8080",
+		//Addr: ":8080",
+		Addr: ":" + s.port,
 	}
 
 	//simple

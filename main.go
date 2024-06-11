@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mjdilworth/template/internal/apploader"
-	"github.com/mjdilworth/template/internal/command"
-	"github.com/mjdilworth/template/internal/server"
+	"github.com/mjdilworth/srv0ne/internal/apploader"
+	"github.com/mjdilworth/srv0ne/internal/command"
+	"github.com/mjdilworth/srv0ne/internal/server"
 )
 
 var Version = "development"
@@ -18,7 +18,8 @@ func main() {
 
 	appFlag := flag.String("flag", "foo", "pass in configuration")
 	daemon := flag.Bool("daemon", true, "run as http daemon")
-	
+	port := flag.String("port", "8080", "port when running as server daemon")
+
 	flag.Parse()
 
 	fmt.Println("appFlag:\t", *appFlag)
@@ -31,7 +32,7 @@ func main() {
 	var app apploader.App
 	if *daemon {
 		//create the application
-		app = server.New()// we want the daemon
+		app = server.New(*port) // we want the daemon
 
 	} else {
 		app = command.New()

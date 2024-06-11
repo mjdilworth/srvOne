@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mjdilworth/srv0ne/internal/server"
+	"github.com/mjdilworth/srvOne/internal/server"
 )
 
 // Helper functions

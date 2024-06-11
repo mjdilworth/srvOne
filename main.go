@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mjdilworth/srv0ne/internal/apploader"
-	"github.com/mjdilworth/srv0ne/internal/command"
-	"github.com/mjdilworth/srv0ne/internal/server"
+	"github.com/mjdilworth/srvOne/internal/apploader"
+	"github.com/mjdilworth/srvOne/internal/command"
+	"github.com/mjdilworth/srvOne/internal/server"
 )
 
 var Version = "development"

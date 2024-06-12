@@ -1,3 +1,3 @@
 module github.com/mjdilworth/srvOne
 
-go 1.22
+go 1.22.2

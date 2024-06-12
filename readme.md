@@ -4,7 +4,7 @@ srvOne built from Template
 
 ## Template Setup ##
 
-1. initialise Go module: go mod initi github.com/mjdilworth/<name>
+1. initialise Go module: go mod init github.com/mjdilworth/<name>
 2. initialse git (git init -b main)
 3. git add README.md
 4. git commit -m "first commit"
@@ -15,10 +15,10 @@ srvOne built from Template
 9. git checkout -b <branch name>
 10. git push -u origin <branch>
 
-### Some handy go notes to help idomatic principles
+### Some handy go notes to help idiomatic principles
 
 - constant declarations are not UPPERCASE
-- small varible names
+- small variable names
 - group variables - var {...}
 - functions that panic prefix with "Must"
 - Structures - use named initialisation of structure variables
@@ -27,7 +27,7 @@ srvOne built from Template
 - function grouping/order : put most important functions at the top of the file, exported ones first
 - HTTP handlers : always prefix name with "handle"
 - enums : go doesnt have them , but prefix enum constants with type name
-- contructor : start with type and right below create the constructor "New"
+- constructor : start with type and right below create the constructor "New"
 
 
 ### Some handy tech notes

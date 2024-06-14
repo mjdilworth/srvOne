@@ -42,3 +42,7 @@ lsof -PiTCP -sTCP:LISTEN | grep srvOne | awk '{ print $2 }'
 
 use backticks to evaluate and used by kill 
 kill lsof -PiTCP -sTCP:LISTEN | grep srvOne | awk '{ print $2 }'
+
+
+
+

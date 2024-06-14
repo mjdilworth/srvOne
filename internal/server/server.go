@@ -12,11 +12,21 @@ import (
 )
 
 type server struct {
-	port string
+	port   string
+	router *http.ServeMux
 }
 
-func New(p string) server {
-	return server{port: p}
+func New(p string) *server {
+	mux := http.NewServeMux()
+	s := server{
+		port:   p,
+		router: mux,
+	}
+
+	// setup routes
+	//	s.routes()
+
+	return &s
 }
 
 func (s server) Run(ctx context.Context) {
@@ -29,21 +39,28 @@ func (s server) Run(ctx context.Context) {
 	//simple
 	http.HandleFunc("/health/", s.Health)
 
+	shutdownChan := make(chan bool, 1)
+
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Fatal(err)
 		}
+		slog.Info("Stopped serving new connections.")
+		shutdownChan <- true
 	}()
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
 
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
-	if err := srv.Shutdown(ctx); err != nil {
+	if err := srv.Shutdown(shutdownCtx); err != nil {
 		slog.Info("Error shutting down server", "err", err)
 	}
+
+	<-shutdownChan
+	slog.Info("Graceful shutdown complete.")
 
 }

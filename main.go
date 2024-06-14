@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"runtime"
 
 	"github.com/mjdilworth/srvOne/internal/apploader"
 	"github.com/mjdilworth/srvOne/internal/command"
@@ -22,6 +23,7 @@ func main() {
 
 	flag.Parse()
 
+	fmt.Printf("GOMAXPROCS: %d\n", runtime.GOMAXPROCS(0))
 	fmt.Println("appFlag:\t", *appFlag)
 	fmt.Println("daemon:\t", *daemon)
 	fmt.Println("Version:\t", Version)

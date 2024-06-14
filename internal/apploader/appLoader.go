@@ -15,6 +15,7 @@ type AppLoader struct {
 }
 
 func New(app App) *AppLoader {
+
 	ctx, cancel := context.WithCancel(context.Background())
 
 	return &AppLoader{
@@ -42,8 +43,8 @@ func (al AppLoader) Run() error {
 		exitCh <- struct{}{}
 	}()
 
-	termCh := make(chan os.Signal, 2)
-	signal.Notify(termCh, syscall.SIGINT, syscall.SIGTERM)
+	termCh := make(chan os.Signal, 3)
+	signal.Notify(termCh, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
 		<-termCh

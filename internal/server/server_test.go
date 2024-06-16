@@ -8,8 +8,8 @@ import (
 )
 
 func TestPing(t *testing.T) {
-	srv := newServer()
-	req := httptest.NewRequest(http.MethodGet, "/ping", nil)
+	srv := New("8080")
+	req := httptest.NewRequest(http.MethodGet, "/health/", nil)
 	w := httptest.NewRecorder()
 	srv.ServeHTTP(w, req)
 

@@ -2,6 +2,7 @@ package apploader
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 	"syscall"
 	"testing"
@@ -66,6 +67,17 @@ func sendSignalToRun(t *testing.T, termSignal syscall.Signal, millisecBeforeKill
 	_ = syscall.Kill(syscall.Getpid(), termSignal)
 
 	return <-exitChan
+}
+
+func TestRun(t *testing.T) {
+	ctx := context.Background()
+	ctx, cancel := context.WithCancelCause(ctx)
+	time.AfterFunc(time.Second, func() { cancel(fmt.Errorf("cancelled from testing")) })
+
+	err := Run(ctx, "7777")
+	if err != nil {
+		fmt.Printf("expected no error, but got: %s", err)
+	}
 }
 
 // New()

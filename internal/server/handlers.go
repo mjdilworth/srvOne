@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"fmt"
 	"log/slog"
 	"net/http"
 )
@@ -14,7 +15,7 @@ func (s server) Health(w http.ResponseWriter, r *http.Request) {
 
 	if r.Header.Get("content-type") != "" && r.Header.Get("content-type") != "application/json" {
 		w.WriteHeader(http.StatusNotImplemented)
-		slog.Info("content-type not implemented: %s", r.Header.Get("content-type"))
+		fmt.Printf("content-type not implemented: %s", r.Header.Get("content-type"))
 		return
 	}
 
